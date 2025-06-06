@@ -1,36 +1,63 @@
 /**
  * @name RainbowGlow
  * @author Wolfÿ
- * @version 1.0.1-Alpha
+ * @version 1.0.0
  * @description Makes the Avatar have a RainbowGlow when someone is speaking
  * @invite avia
  * @source https://github.com/MEWPASCO/rainbowglow-avatars
  * @website https://www.avariaxyz.win/
  */
 
-/* === Rainbow glow around Avatars in VC === */
-:root {
-  --rainbow-glow-size: 2px;
-  --rainbow-glow-color: #0ff;
-  --rainbow-glow-speed: 3s;
-}
-
-/* === Unified Speaking Avatar Glow === */
-.avatarSpeaking__07f91,
-.avatarSpeaking__44b0c,
-.speaking__2f4f7,
-.speaking__68617,
-.speaking_f910d0 {
-  box-shadow: inset 0 0 0 var(--rainbow-glow-size) var(--rainbow-glow-color)!important;
-  animation: rainbowGlow var(--rainbow-glow-speed) linear infinite!important;
-}
-
-/* === Rainbow Hue Animation === */
-@keyframes rainbowGlow {
-  0% {
-    filter: hue-rotate(0deg);
+/* Rainbow glow around Avatars in VC */
+#app-mount
+  /* Avatars in the VC when in Chat wiew - Server */
+  .avatarSpeaking__07f91 {
+    -webkit-box-shadow: inset 0 0 0 2px #0ff !important;
+    box-shadow: inset 0 0 0 2px #0ff !important;
+    -webkit-animation: rainbow 3s infinite linear !important;
+    animation: rainbow 3s infinite linear !important;
   }
-  100% {
-    filter: hue-rotate(360deg);
+
+  /* Own useravatar in the bottom left - Everywhere */
+  .avatarSpeaking__44b0c {
+    -webkit-box-shadow: inset 0 0 0 2px #0ff !important;
+    box-shadow: inset 0 0 0 2px #0ff !important;
+    -webkit-animation: rainbow 3s infinite linear !important;
+    animation: rainbow 3s infinite linear !important;
   }
+
+  /* Big boxes when VC is in focus - Everywhere */
+  .speaking__2f4f7 {
+    -webkit-box-shadow: inset 0 0 0 2px #0ff !important;
+    box-shadow: inset 0 0 0 2px #0ff !important;
+    -webkit-animation: rainbow 3s infinite linear !important;
+    animation: rainbow 3s infinite linear !important;
+  }
+
+  /* Small avatar below "Voice connected" if enabled - Everywhere */
+  .speaking__68617 {
+    -webkit-box-shadow: inset 0 0 0 2px #0ff !important;
+    box-shadow: inset 0 0 0 2px #0ff !important;
+    -webkit-animation: rainbow 3s infinite linear !important;
+    animation: rainbow 3s infinite linear !important;
+  }
+
+  /* Avatars in private/group call - DMs */
+  .speaking_f910d0 {
+    -webkit-box-shadow: inset 0 0 0 2px #0ff !important;
+    box-shadow: inset 0 0 0 2px #0ff !important;
+    -webkit-animation: rainbow 3s infinite linear !important;
+    animation: rainbow 3s infinite linear !important;
+  }
+
+  /* Animation */
+  @keyframes rainbow {
+    0% {
+      -webkit-filter: hue-rotate(0deg);
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      -webkit-filter: hue-rotate(360deg);
+      filter: hue-rotate(360deg);
+    }
 }
