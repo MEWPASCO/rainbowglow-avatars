@@ -9,11 +9,11 @@
  */
 
 /* Rainbow glow around avatars in VC */
-#app-mount .avatarSpeaking__07f91,
-#app-mount .avatarSpeaking__44b0c,
-#app-mount .speaking__2f4f7,
-#app-mount .speaking__68617,
-#app-mount .speaking__f910d0 {
+#app-mount .avatarSpeaking__07f91, /* Avatars in Server VC */
+#app-mount .avatarSpeaking__44b0c, /* Own-Avatar in User Panel bottom left */
+#app-mount .speaking__2f4f7, /* Boxed Layout in DMS when streaming and in Servers when in focused view */
+#app-mount .speaking__68617, /* Avatar of others in User Panel bottom left */
+#app-mount .speaking_f910d0 { /* Avatars in DMS round layout */
   -webkit-box-shadow: inset 0 0 0 2px #0ff !important;
   box-shadow: inset 0 0 0 2px #0ff !important;
   -webkit-animation: rainbow 3s infinite linear !important;
