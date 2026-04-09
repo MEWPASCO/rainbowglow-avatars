@@ -1,32 +1,29 @@
 /**
  * @name RainbowGlow
  * @author Wolfÿ
- * @version 1.0.1
+ * @version 1.1
  * @description Makes the Avatar have a RainbowGlow when someone is speaking
  * @invite avia
  * @source https://github.com/MEWPASCO/rainbowglow-avatars
  * @website https://www.avariaxyz.win/
  */
 
-/* Rainbow glow around avatars in VC */
-#app-mount .avatarSpeaking__07f91, /* Avatars in Server VC */
-#app-mount .avatarSpeaking__44b0c, /* Own-Avatar in User Panel bottom left */
-#app-mount ._2f4f7eb58b61c328-speaking, /* Boxed Layout in DMS when streaming and in Servers when in focused view */
-#app-mount .speaking__68617, /* Avatar of others in User Panel bottom left */
-#app-mount .speaking_f910d0 { /* Avatars in DMS round layout */
-  -webkit-box-shadow: inset 0 0 0 2px #0ff !important;
-  box-shadow: inset 0 0 0 2px #0ff !important;
-  -webkit-animation: rainbow 3s infinite linear !important;
-  animation: rainbow 3s infinite linear !important;
-}
-
 @keyframes rainbow {
   0% {
-    -webkit-filter: hue-rotate(0deg);
     filter: hue-rotate(0deg);
   }
   100% {
-    -webkit-filter: hue-rotate(360deg);
     filter: hue-rotate(360deg);
   }
+}
+
+/* Rainbow glow around avatars in VC */
+div[class*="userAvatar__"][style*="status-speaking"], /* Avatars in Server VC */
+div[class*="avatarBorder__"][style*="status-speaking"], /* Own-Avatar in User Panel bottom left */
+div[class*="border__"][style*="status-speaking"], /* Boxed Layout in DMS when streaming and in Servers when in focused view */
+div[class*="avatar__"][style*="status-speaking"], /* Avatar of others in User Panel bottom left */
+div[class*="border_"][style*="status-speaking"] /* Avatars in DMS round layout */
+{
+  box-shadow: inset 0 0 0 2px #0ff !important;
+  animation: rainbow 3s infinite linear !important;
 }
