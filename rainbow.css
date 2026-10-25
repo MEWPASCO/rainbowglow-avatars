@@ -1,29 +1,41 @@
 /**
  * @name RainbowGlow
  * @author Wolfÿ
- * @version 1.1
+ * @version 1.2
  * @description Makes the Avatar have a RainbowGlow when someone is speaking
  * @invite avia
  * @source https://github.com/MEWPASCO/rainbowglow-avatars
  * @website https://www.avariaxyz.win/
  */
 
-@keyframes rainbow {
-  0% {
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    filter: hue-rotate(360deg);
-  }
+@property --rg-hue {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes rg-spin {
+  to { --rg-hue: 360deg; }
 }
 
 /* Rainbow glow around avatars in VC */
-div[class*="userAvatar__"][style*="status-speaking"], /* Avatars in Server VC */
-div[class*="avatarBorder__"][style*="status-speaking"], /* Own-Avatar in User Panel bottom left */
-div[class*="border__"][style*="status-speaking"], /* Boxed Layout in DMS when streaming and in Servers when in focused view */
-div[class*="avatar__"][style*="status-speaking"], /* Avatar of others in User Panel bottom left */
-div[class*="border_"][style*="status-speaking"] /* Avatars in DMS round layout */
+div[class*="userAvatar__"][style*="status-speaking"],   /* Avatars in Server VC */
+div[class*="avatarBorder__"][style*="status-speaking"], /* Own avatar in User Panel bottom left */
+div[class*="border_"][style*="status-speaking"],        /* DM round layout, boxed layout when streaming, focused view in servers */
+div[class*="avatar__"][style*="status-speaking"]        /* Avatars of others in User Panel bottom left */
 {
-  box-shadow: inset 0 0 0 2px #0ff !important;
-  animation: rainbow 3s infinite linear !important;
+  box-shadow:
+    inset 0 0 0 2px hsl(var(--rg-hue) 100% 60%),
+    0 0 8px 1px hsl(var(--rg-hue) 100% 60% / 0.6) !important;
+  animation: rg-spin 3s linear infinite;
+}
+
+/* Static ring for people who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  div[class*="userAvatar__"][style*="status-speaking"],
+  div[class*="avatarBorder__"][style*="status-speaking"],
+  div[class*="border_"][style*="status-speaking"],
+  div[class*="avatar__"][style*="status-speaking"] {
+    animation: none;
+  }
 }
